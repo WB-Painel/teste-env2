@@ -23,7 +23,7 @@ const port = process.env.PORT || 3000;
 
 app.get("/", function (req, res) {
 
-res.send("Hello, Sinapsel Factory");
+res.send("Hello, Sinapsel Factory" + data);
 
 });
 
