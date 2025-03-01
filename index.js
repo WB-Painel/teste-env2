@@ -52,7 +52,7 @@ try{
 
 (async () => {
 
-const { data: { SHA } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
+const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
       owner: ACCOUNT,
       repo: REPOSITORY,
       file_path: PATCH
@@ -64,7 +64,7 @@ repo:REPOSITORY,
 path:PATCH,
 message:KEY,
 content:KEY,
-sha:SHA,
+sha:sha,
 committer:{
 name:USER,
 email:EMAIL,
