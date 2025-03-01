@@ -9,6 +9,8 @@ const express = require("express");
 
 import { Octokit } from "@octokit/rest";
 
+import {Base64} from 'js-base64';
+
 
 var SHA256 = "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU";
 
@@ -18,7 +20,7 @@ var R = "Key";
 
 var P = "Key";
 
-var S = "Teste";
+var S = Base64.encode("Teste");
 
 var octokit = new Octokit({auth:SHA256,});
 
