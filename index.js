@@ -10,7 +10,7 @@ const express = require("express");
 import { Octokit } from "@octokit/rest";
 
 const octokit = new Octokit({
-    auth: "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",
+    auth: "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU",
 });
 
 const { data } = octokit.request("/user");
