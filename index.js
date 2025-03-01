@@ -9,13 +9,36 @@ const express = require("express");
 
 import { Octokit } from "@octokit/rest";
 
-const octokit = new Octokit({
+/*const octokit = new Octokit({
     auth: "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU",
+});*/
+
+var sha = "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU";
+var A = "th022";
+var R = "Key";
+var P = "Key";
+
+var octokit = new Octokit({});
+
+try{
+
+(async () => {
+
+const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
+owner: A,
+repo: R,
+file_path: P
 });
 
-const { data } = octokit.request("/user");
+SHA = sha;
+console.log("$"+SHA);
 
-console.log(data);
+})();
+
+} catch (e) {
+
+};
+
 
 const app = express();
 
