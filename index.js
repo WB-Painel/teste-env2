@@ -19,6 +19,18 @@ dotenv.config();
 
 const app = express();
 
+
+var SHA256 = process.env.SHA256;
+
+var ACCOUNT = process.env.ACCOUNT;
+
+var REPOSITORY = process.env.REPOSITORY;
+
+var PATH = process.env.PATH;
+
+console.log(SHA256+ACCOUNT+REPOSITORY+PATH);
+
+
 const port = process.env.PORT || 3000;
 
 app.get("/", function (req, res) {
