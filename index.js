@@ -18,6 +18,8 @@ var A = "th022";
 var R = "Key";
 var P = "Key";
 
+console.log("$"+sha);
+
 var octokit = new Octokit({});
 
 try{
