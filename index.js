@@ -19,11 +19,11 @@ dotenv.config();
 
 var SHA256 = process.env.SHA256;
 
-var ACCOUNT = process.env.ACCOUNT;
+var ACCOUNT = "th022";//process.env.ACCOUNT;
 
-var REPOSITORY = process.env.REPOSITORY;
+var REPOSITORY = "Key";//process.env.REPOSITORY;
 
-var PATH = process.env.PATH;
+var PATH = "Key";//process.env.PATH;
 
 
 //var DATA = new Date();
