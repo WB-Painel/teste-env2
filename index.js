@@ -45,7 +45,7 @@ var KEY = Base64.encode("K1");
 
 var octokit = new Octokit({auth:SHA256,});
 
-try{
+/*try{
 
 (async () => {
 
@@ -82,7 +82,7 @@ headers: {
 
 console.log("Erro:"+e);
 
-};
+};*/
 
 
 const app = express();
