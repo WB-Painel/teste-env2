@@ -19,41 +19,47 @@ dotenv.config();
 
 var SHA256 = process.env.SHA256;
 
-var A = "th022";
+var ACCOUNT = process.env.ACCOUNT;
 
-var R = "Key";
+var REPOSITORY = process.env.REPOSITORY;
 
-var P = "Key";
+var PATH = process.env.PATH;
 
-var S = Base64.encode("Teste1");
+
+var KEY = Base64.encode("Teste2");
+
+
+var USER = process.env.USER;
+
+var EMAIL = process.env.EMAIL;
+
 
 var octokit = new Octokit({auth:SHA256,});
 
 try{
 
-
 (async () => {
 
-const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
-      owner: A,
-      repo: R,
-      file_path: P
-    });
+const { data: { SHA } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
+      owner: ACCOUNT,
+      repo: REPOSITORY,
+      file_path: PATH
+      });
 
 octokit.repos.createOrUpdateFileContents({
-owner:A,
-repo:R,
-path:P,
-message:S,
-content:S,
-sha:sha,
+owner:ACCOUNT,
+repo:REPOSITORY,
+path:PATH,
+message:KEY,
+content:KEY,
+sha:SHA,
 committer:{
-name:"th022",
-email:"meunumerofake2026@gmail.com",
+name:USER,
+email:EMAIL,
 },
 author:{
-name:"th022",
-email:"meunumerofake2026@gmail.com",
+name:USER,
+email:EMAIL,
 },
 
 headers: {
