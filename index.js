@@ -38,7 +38,7 @@ var MES = DATA.getMonth();
 var ANO = DATA.getFullYear();
 
 
-var KEY = Base64.encode("Teste4");
+var KEY = Base64.encode("Teste4"+DIA);
 
 
 var USER = process.env.USER;
@@ -52,7 +52,7 @@ try{
 
 (async () => {
 
-const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
+const { data: { SHA } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
       owner: ACCOUNT,
       repo: REPOSITORY,
       file_path: PATCH
@@ -64,7 +64,7 @@ repo:REPOSITORY,
 path:PATCH,
 message:KEY,
 content:KEY,
-sha:sha,
+sha:SHA,
 committer:{
 name:USER,
 email:EMAIL,
