@@ -42,6 +42,10 @@ if(DIA<2){
   DIA = 0 + DIA;
 }
 
+if(MES<2){
+  MES = 0 + MES;
+}
+
 
 var KEY = Base64.encode("Teste4"+DIA+MES+ANO);
 
