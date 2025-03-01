@@ -1,18 +1,23 @@
 
 import { createRequire } from "module";
 
+import { Octokit } from "@octokit/rest";
+
+import { Base64 } from "js-base64";
+
+
 const require = createRequire(import.meta.url);
 
-require("dotenv").config();
+
+const dotenv = require("dotenv");
 
 const express = require("express");
 
-import { Octokit } from "@octokit/rest";
 
-import {Base64} from 'js-base64';
+dotenv.config();
 
 
-var SHA256 = "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU";
+var SHA256 = process.env.SHA-256;
 
 var A = "th022";
 
@@ -20,7 +25,7 @@ var R = "Key";
 
 var P = "Key";
 
-var S = Base64.encode("Teste");
+var S = Base64.encode("Teste1");
 
 var octokit = new Octokit({auth:SHA256,});
 
