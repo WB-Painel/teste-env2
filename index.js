@@ -38,7 +38,7 @@ var MES = DATA.getMonth();
 var ANO = DATA.getFullYear();
 
 
-var KEY = Base64.encode("Teste4");
+var KEY = Base64.encode("Teste4"+DIA+MES+ANO);
 
 
 var USER = process.env.USER;
