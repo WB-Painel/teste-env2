@@ -1,6 +1,6 @@
 import { createRequire } from "module";
 
-import { Octokit } from "https://cdn.skypack.dev/octokit";
+import { Octokit } from "https://cdn.skypack.dev/@octokit/rest@18.5.4";
 
 const require = createRequire(import.meta.url);
 
