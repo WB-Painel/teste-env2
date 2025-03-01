@@ -30,8 +30,7 @@ repo: R,
 file_path: P
 });
 
-SHA = sha;
-console.log("$"+SHA);
+console.log("$"+sha);
 
 })();
 
