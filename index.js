@@ -1,12 +1,12 @@
 import { createRequire } from "module";
 
-import { Octokit } from "https://cdn.skypack.dev/@octokit/rest@18.5.4";
-
 const require = createRequire(import.meta.url);
 
 require("dotenv").config();
 
 const express = require("express");
+
+const {Octokit} = require("octokit");
 
 const app = express();
 
