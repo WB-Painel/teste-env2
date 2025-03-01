@@ -9,34 +9,56 @@ const express = require("express");
 
 import { Octokit } from "@octokit/rest";
 
-/*const octokit = new Octokit({
-    auth: "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU",
-});*/
 
-var sha = "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU";
+var SHA256 = "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU";
+
 var A = "th022";
+
 var R = "Key";
+
 var P = "Key";
 
-console.log("$"+sha);
+var S = "Teste";
 
-var octokit = new Octokit({});
+var octokit = new Octokit({auth:SHA256,});
 
 try{
+
 
 (async () => {
 
 const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
-owner: A,
-repo: R,
-file_path: P
-});
+      owner: A,
+      repo: R,
+      file_path: P
+    });
 
-console.log("$"+sha);
+octokit.repos.createOrUpdateFileContents({
+owner:A,
+repo:R,
+path:P,
+message:S,
+content:S,
+sha:sha,
+committer:{
+name:"th022",
+email:"meunumerofake2026@gmail.com",
+},
+author:{
+name:"th022",
+email:"meunumerofake2026@gmail.com",
+},
+
+headers: {
+    'X-GitHub-Api-Version': '2022-11-28'
+  }
+});
 
 })();
 
 } catch (e) {
+
+console.log("Erro:"+e);
 
 };
 
