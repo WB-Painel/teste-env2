@@ -20,6 +20,8 @@ dotenv.config();
 const app = express();
 
 
+setInterval(function(){
+
 var SHA256 = process.env.SHA256;
 
 var ACCOUNT = process.env.ACCOUNT;
@@ -37,6 +39,12 @@ var MES = String(DATA.getMonth());
 
 var ANO = String(DATA.getFullYear());
 
+var HORAS = String(DATA.getHours());
+
+var MINUTOS = String(DATA.getMinutes());
+
+var SEGUNDOS = String(DATA.getSeconds());
+
 
 if(DIA.length<2){
   DIA = "0" + DIA;
@@ -47,10 +55,10 @@ if(MES.length<2){
 }
 
 
-var KEY_ENCODED = Base64.encode(""+DIA+MES+ANO);
+var KEY_ENCODED = Base64.encode(""+DIA+MES+ANO+":"+HORAS+MINUTOS+SEGUNDOS);
 
 
-var Key = Base64.encode(KEY_ENCODED);
+var KEY = Base64.encode(KEY_ENCODED);
 
 
 var USER = process.env.USER;
@@ -98,6 +106,8 @@ headers: {
 console.log("Erro:"+e);
 
 };
+
+}, 60 * 1000 );
 
 
 const port = process.env.PORT || 3000;
