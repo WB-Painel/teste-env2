@@ -46,32 +46,32 @@ var USER = process.env.USER;
 var EMAIL = process.env.EMAIL;
 
 
-//var octokit = new Octokit({auth:SHA256,});
+var octokit = new Octokit({auth:SHA256,});
 
-/*try{
+try{
 
 (async () => {
 
 const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
       owner: ACCOUNT,
       repo: REPOSITORY,
-      file_path: PATH
+      file_path: PATCH
       });
 
 octokit.repos.createOrUpdateFileContents({
 owner:ACCOUNT,
 repo:REPOSITORY,
-path:PATH,
+path:PATCH,
 message:KEY,
 content:KEY,
 sha:sha,
 committer:{
-name:"th022",
-email:"meunumerofake2026@gmail.com",
+name:USER,
+email:EMAIL,
 },
 author:{
-name:"th022",
-email:"meunumerofake2026@gmail.com",
+name:USER,
+email:EMAIL,
 },
 
 headers: {
@@ -85,7 +85,7 @@ headers: {
 
 console.log("Erro:"+e);
 
-};*/
+};
 
 
 const port = process.env.PORT || 3000;
