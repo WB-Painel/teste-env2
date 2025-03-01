@@ -26,7 +26,7 @@ var ACCOUNT = process.env.ACCOUNT;
 
 var REPOSITORY = process.env.REPOSITORY;
 
-//var PATH = process.env.PATH;
+var PATH = process.env.PATH;
 
 console.log(SHA256);
 
