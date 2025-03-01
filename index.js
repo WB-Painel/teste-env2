@@ -26,7 +26,16 @@ var REPOSITORY = process.env.REPOSITORY;
 var PATH = process.env.PATH;
 
 
-var KEY = Base64.encode("Teste2");
+var DATA = new Date();
+
+var DIA = DATA.getData();
+
+var MES = DATA.getMonth();
+
+var ANO = DATA.getFullYear();
+
+
+var KEY = Base64.encode(DIA+MES+ANO);
 
 
 var USER = process.env.USER;
