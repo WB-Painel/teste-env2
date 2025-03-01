@@ -28,9 +28,66 @@ var REPOSITORY = process.env.REPOSITORY;
 
 var PATCH = process.env.PATCH;
 
-console.log(SHA256);
 
-console.log(ACCOUNT);
+var DATA = new Date();
+
+var DIA = DATA.getData();
+
+var MES = DATA.getMonth();
+
+var ANO = DATA.getFullYear();
+
+
+var KEY = Base64.encode(DIA+MES+ANO);
+
+console.log(KEY);
+
+
+//var USER = process.env.USER;
+
+//var EMAIL = process.env.EMAIL;
+
+
+//var octokit = new Octokit({auth:SHA256,});
+
+/*try{
+
+(async () => {
+
+const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
+      owner: ACCOUNT,
+      repo: REPOSITORY,
+      file_path: PATH
+      });
+
+octokit.repos.createOrUpdateFileContents({
+owner:ACCOUNT,
+repo:REPOSITORY,
+path:PATH,
+message:KEY,
+content:KEY,
+sha:sha,
+committer:{
+name:"th022",
+email:"meunumerofake2026@gmail.com",
+},
+author:{
+name:"th022",
+email:"meunumerofake2026@gmail.com",
+},
+
+headers: {
+    'X-GitHub-Api-Version': '2022-11-28'
+  }
+});
+
+})();
+
+} catch (e) {
+
+console.log("Erro:"+e);
+
+};*/
 
 
 const port = process.env.PORT || 3000;
