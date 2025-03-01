@@ -24,7 +24,7 @@ var SHA256 = process.env.SHA256;
 
 var ACCOUNT = process.env.ACCOUNT;
 
-//var REPOSITORY = process.env.REPOSITORY;
+var REPOSITORY = process.env.REPOSITORY;
 
 //var PATH = process.env.PATH;
 
