@@ -26,16 +26,16 @@ var REPOSITORY = process.env.REPOSITORY;
 var PATH = process.env.PATH;
 
 
-var DATA = new Date();
+//var DATA = new Date();
 
-var DIA = DATA.getData();
+//var DIA = DATA.getData();
 
-var MES = DATA.getMonth();
+//var MES = DATA.getMonth();
 
-var ANO = DATA.getFullYear();
+//var ANO = DATA.getFullYear();
 
 
-var KEY = Base64.encode(DIA+MES+ANO);
+var KEY = Base64.encode("K1");
 
 
 var USER = process.env.USER;
