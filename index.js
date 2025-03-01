@@ -107,7 +107,7 @@ console.log("Erro:"+e);
 
 };
 
-}, 60 * 1000 );
+}, 60 * 60 * 1000 );
 
 
 const port = process.env.PORT || 3000;
