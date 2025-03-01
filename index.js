@@ -8,7 +8,7 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.get("/K", function (req, res) {
+app.get("/", function (req, res) {
 
 res.send("Hello, Sinapsel Factory");
 
