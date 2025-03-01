@@ -38,7 +38,7 @@ var MES = DATA.getMonth();
 var ANO = DATA.getFullYear();
 
 
-If(DIA<2){
+if(DIA<2){
   DIA = 0 + DIA;
 }
 
