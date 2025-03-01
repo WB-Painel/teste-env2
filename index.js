@@ -31,23 +31,23 @@ var PATCH = process.env.PATCH;
 
 var DATA = new Date();
 
-var DIA = DATA.getDate();
+var DIA = String(DATA.getDate());
 
-var MES = DATA.getMonth();
+var MES = String(DATA.getMonth());
 
-var ANO = DATA.getFullYear();
+var ANO = String(DATA.getFullYear());
 
 
-if(DIA<2){
-  DIA = 0 + DIA;
+if(DIA.length<2){
+  DIA = "0" + DIA;
 }
 
-if(MES<2){
-  MES = 0 + MES;
+if(MES.length<2){
+  MES = "0" + MES;
 }
 
 
-var KEY = Base64.encode("Teste4"+DIA+MES+ANO);
+var KEY = Base64.encode(""+DIA+MES+ANO);
 
 
 var USER = process.env.USER;
