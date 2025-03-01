@@ -38,9 +38,9 @@ var PATH = process.env.PATH;
 var KEY = Base64.encode("K1");
 
 
-var USER = process.env.USER;
+//var USER = process.env.USER;
 
-var EMAIL = process.env.EMAIL;
+//var EMAIL = process.env.EMAIL;
 
 
 var octokit = new Octokit({auth:SHA256,});
@@ -63,12 +63,12 @@ message:KEY,
 content:KEY,
 sha:SHA,
 committer:{
-name:USER,
-email:EMAIL,
+name:"th022",
+email:"meunumerofake2026@gmail.com",
 },
 author:{
-name:USER,
-email:EMAIL,
+name:"th022",
+email:"meunumerofake2026@gmail.com",
 },
 
 headers: {
