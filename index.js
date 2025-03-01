@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const express = require("express");
 
-const { Octokit } = require("@octokit/rest");
+import { Octokit } from "@octokit/rest";
 
 const app = express();
 
