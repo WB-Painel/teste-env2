@@ -38,7 +38,7 @@ var MES = DATA.getMonth();
 var ANO = DATA.getFullYear();
 
 
-var KEY = Base64.encode(DIA+MES+ANO);
+var KEY = Base64.encode(String.valueOf(DIA+MES+ANO));
 
 
 
