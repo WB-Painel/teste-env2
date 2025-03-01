@@ -41,51 +41,7 @@ var ANO = DATA.getFullYear();
 var KEY = Base64.encode(DIA+MES+ANO);
 
 
-var USER = process.env.USER;
 
-var EMAIL = process.env.EMAIL;
-
-
-var octokit = new Octokit({auth:SHA256,});
-
-try{
-
-(async () => {
-
-const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
-      owner: ACCOUNT,
-      repo: REPOSITORY,
-      file_path: PATCH
-      });
-
-octokit.repos.createOrUpdateFileContents({
-owner:ACCOUNT,
-repo:REPOSITORY,
-path:PATCH,
-message:KEY,
-content:KEY,
-sha:sha,
-committer:{
-name:USER,
-email:EMAIL,
-},
-author:{
-name:USER,
-email:EMAIL,
-},
-
-headers: {
-    'X-GitHub-Api-Version': '2022-11-28'
-  }
-});
-
-})();
-
-} catch (e) {
-
-console.log("Erro:"+e);
-
-};
 
 
 const port = process.env.PORT || 3000;
