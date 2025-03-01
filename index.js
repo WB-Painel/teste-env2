@@ -38,6 +38,11 @@ var MES = DATA.getMonth();
 var ANO = DATA.getFullYear();
 
 
+If(DIA<2){
+  DIA = 0 + DIA;
+}
+
+
 var KEY = Base64.encode("Teste4"+DIA+MES+ANO);
 
 
