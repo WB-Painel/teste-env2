@@ -47,7 +47,10 @@ if(MES.length<2){
 }
 
 
-var KEY = Base64.encode(""+DIA+MES+ANO);
+var KEY_ENCODED = Base64.encode(""+DIA+MES+ANO);
+
+
+var Key = Base64.encode(KEY_ENCODED);
 
 
 var USER = process.env.USER;
