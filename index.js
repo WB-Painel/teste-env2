@@ -31,7 +31,7 @@ var PATCH = process.env.PATCH;
 
 var DATA = new Date();
 
-var DIA = DATA.getData();
+var DIA = DATA.getDate();
 
 var MES = DATA.getMonth();
 
@@ -40,12 +40,10 @@ var ANO = DATA.getFullYear();
 
 var KEY = Base64.encode(DIA+MES+ANO);
 
-console.log(KEY);
 
+var USER = process.env.USER;
 
-//var USER = process.env.USER;
-
-//var EMAIL = process.env.EMAIL;
+var EMAIL = process.env.EMAIL;
 
 
 //var octokit = new Octokit({auth:SHA256,});
