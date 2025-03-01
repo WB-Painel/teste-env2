@@ -1,5 +1,7 @@
 import { createRequire } from "module";
 
+import { Octokit } from "https://cdn.skypack.dev/octokit";
+
 const require = createRequire(import.meta.url);
 
 require("dotenv").config();
