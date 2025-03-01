@@ -17,7 +17,7 @@ const express = require("express");
 dotenv.config();
 
 
-var SHA256 = "ghp_"+"BVEoRQG3oyGnxDYY9Iixg0OAghbPuL3BLZFU";
+var SHA256 = process.env.SHA256;
 
 var A = "th022";
 
