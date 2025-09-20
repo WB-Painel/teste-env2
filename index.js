@@ -128,7 +128,7 @@ setInterval(taskFunction, 24 * 60 * 60 * 1000);
 
 }
 
-scheduleDailyTaskAtHour(generateAndPushKey, 14);
+scheduleDailyTaskAtHour(generateAndPushKey, 0);
 
 const port = process.env.PORT || 3000;
 
