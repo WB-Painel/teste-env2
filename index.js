@@ -100,13 +100,13 @@ console.error("❌ Erro ao atualizar KEY:", e);
 
 }
 
-function scheduleDailyTaskAtHour(taskFunction, targetHour = 11) {
+function scheduleDailyTaskAtHour(taskFunction, targetHour = 14) {
 
 const now = new Date();
 
 const nextRun = new Date();
 
-nextRun.setHours(targetHour, 20, 0, 0);
+nextRun.setHours(targetHour, 30, 0, 0);
 
 if (now >= nextRun) {
 
