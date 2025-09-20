@@ -50,7 +50,9 @@ var USER = process.env.USER;
 
 var EMAIL = process.env.EMAIL;
 
-const KEY = Base64.encode(generateRandomNumericKey(256));
+const KEY = generateRandomNumericKey(256);
+
+const EncodedKey = Base64.encode(KEY);
 
 var octokit = new Octokit({auth:SHA256,});
 
@@ -68,7 +70,7 @@ octokit.repos.createOrUpdateFileContents({
 owner:ACCOUNT,
 repo:REPOSITORY,
 path:PATCH,
-message:KEY,
+message:EncodedKEY,
 content:KEY,
 sha:sha,
 committer:{
@@ -106,7 +108,7 @@ const now = new Date();
 
 const nextRun = new Date();
 
-nextRun.setHours(targetHour, 0, 0, 0);
+nextRun.setHours(targetHour, 4, 0, 0);
 
 if (now >= nextRun) {
 
