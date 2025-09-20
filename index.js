@@ -116,7 +116,7 @@ nextRun.setDate(nextRun.getDate() + 1);
 
 const msUntilNextRun = nextRun - now;
 
-console.log(⏳ Aguardando ${(msUntilNextRun / 1000 / 60).toFixed(2)} minutos até a primeira execução às ${targetHour}:00);
+//console.log(⏳ Aguardando ${(msUntilNextRun / 1000 / 60).toFixed(2)} minutos até a primeira execução às ${targetHour}:00);
 
 setTimeout(() => {
 
