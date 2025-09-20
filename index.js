@@ -50,7 +50,7 @@ var USER = process.env.USER;
 
 var EMAIL = process.env.EMAIL;
 
-const KEY = generateRandomNumericKey(12);
+const KEY = generateRandomNumericKey(256);
 
 var octokit = new Octokit({auth:SHA256,});
 
@@ -100,13 +100,13 @@ console.error("❌ Erro ao atualizar KEY:", e);
 
 }
 
-function scheduleDailyTaskAtHour(taskFunction, targetHour = 14) {
+function scheduleDailyTaskAtHour(taskFunction, targetHour = 0) {
 
 const now = new Date();
 
 const nextRun = new Date();
 
-nextRun.setHours(targetHour, 50, 0, 0);
+nextRun.setHours(targetHour, 0, 0, 0);
 
 if (now >= nextRun) {
 
