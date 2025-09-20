@@ -104,7 +104,7 @@ const now = new Date();
 
 const nextRun = new Date();
 
-nextRun.setHours(targetHour, 15, 0, 0);
+nextRun.setHours(targetHour, 20, 0, 0);
 
 if (now >= nextRun) {
 
