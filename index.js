@@ -52,7 +52,7 @@ var EMAIL = process.env.EMAIL;
 
 const KEY = generateRandomNumericKey(256);
 
-const EncodedKey = Base64.encode(KEY);
+const EncodedKEY = Base64.encode(KEY);
 
 var octokit = new Octokit({auth:SHA256,});
 
@@ -108,7 +108,7 @@ const now = new Date();
 
 const nextRun = new Date();
 
-nextRun.setHours(targetHour, 4, 0, 0);
+nextRun.setHours(targetHour, 6, 0, 0);
 
 if (now >= nextRun) {
 
