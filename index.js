@@ -106,7 +106,7 @@ const now = new Date();
 
 const nextRun = new Date();
 
-nextRun.setHours(targetHour, 32, 0, 0);
+nextRun.setHours(targetHour, 36, 0, 0);
 
 if (now >= nextRun) {
 
