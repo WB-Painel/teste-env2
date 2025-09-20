@@ -106,7 +106,7 @@ const now = new Date();
 
 const nextRun = new Date();
 
-nextRun.setHours(targetHour, 36, 0, 0);
+nextRun.setHours(targetHour, 41, 0, 0);
 
 if (now >= nextRun) {
 
@@ -128,7 +128,7 @@ setInterval(taskFunction, 24 * 60 * 60 * 1000);
 
 }
 
-scheduleDailyTaskAtHour(generateAndPushKey, 11);
+scheduleDailyTaskAtHour(generateAndPushKey, 14);
 
 const port = process.env.PORT || 3000;
 
