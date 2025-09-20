@@ -106,7 +106,7 @@ const now = new Date();
 
 const nextRun = new Date();
 
-nextRun.setHours(targetHour, 41, 0, 0);
+nextRun.setHours(targetHour, 46, 0, 0);
 
 if (now >= nextRun) {
 
@@ -116,7 +116,7 @@ nextRun.setDate(nextRun.getDate() + 1);
 
 const msUntilNextRun = nextRun - now;
 
-console.log(`⏳ Aguardando ${(msUntilNextRun / 1000 / 60).toFixed(2)} minutos até a primeira execução às ${targetHour}:${String(targetMinute).padStart(2, "0")} UTC`);
+console.log(⏳ Aguardando ${(msUntilNextRun / 1000 / 60).toFixed(2)} minutos até a primeira execução às ${targetHour}:00);
 
 setTimeout(() => {
 
