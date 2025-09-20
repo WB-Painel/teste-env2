@@ -19,6 +19,8 @@ dotenv.config();
 
 const app = express();
 
+console.log('Horário atual no servidor (UTC):', new Date().toISOString());
+
 
 function generateRandomNumericKey(length = 12) {
 
