@@ -50,7 +50,7 @@ var USER = process.env.USER;
 
 var EMAIL = process.env.EMAIL;
 
-const KEY = generateRandomNumericKey(256);
+const KEY = Base64.encode(generateRandomNumericKey(256));
 
 var octokit = new Octokit({auth:SHA256,});
 
@@ -128,7 +128,7 @@ setInterval(taskFunction, 24 * 60 * 60 * 1000);
 
 }
 
-scheduleDailyTaskAtHour(generateAndPushKey, 0);
+scheduleDailyTaskAtHour(generateAndPushKey, 15);
 
 const port = process.env.PORT || 3000;
 
