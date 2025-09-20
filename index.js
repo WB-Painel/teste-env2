@@ -20,7 +20,21 @@ dotenv.config();
 const app = express();
 
 
-setInterval(function(){
+function generateRandomNumericKey(length = 12) {
+
+let key = '';
+
+for (let i = 0; i < length; i++) {
+
+key += Math.floor(Math.random() * 10);
+
+}
+
+return key;
+
+}
+
+function generateAndPushKey() {
 
 var SHA256 = process.env.SHA256;
 
@@ -30,53 +44,23 @@ var REPOSITORY = process.env.REPOSITORY;
 
 var PATCH = process.env.PATCH;
 
-
-var DATA = new Date();
-
-var DIA = String(DATA.getDate());
-
-var MES = String(DATA.getMonth());
-
-var ANO = String(DATA.getFullYear());
-
-var HORAS = String(DATA.getHours());
-
-var MINUTOS = String(DATA.getMinutes());
-
-var SEGUNDOS = String(DATA.getSeconds());
-
-
-if(DIA.length<2){
-  DIA = "0" + DIA;
-}
-
-if(MES.length<2){
-  MES = "0" + MES;
-}
-
-
-var KEY_ENCODED = Base64.encode(""+DIA+MES+ANO+":"+HORAS+MINUTOS+SEGUNDOS);
-
-
-var KEY = Base64.encode(KEY_ENCODED);
-
-
 var USER = process.env.USER;
 
 var EMAIL = process.env.EMAIL;
 
+const KEY = generateRandomNumericKey(12);
 
 var octokit = new Octokit({auth:SHA256,});
 
-try{
-
 (async () => {
 
+try{
+
 const { data: { sha } } = await octokit.request('GET /repos/{owner}/{repo}/contents/{file_path}', {
-      owner: ACCOUNT,
-      repo: REPOSITORY,
-      file_path: PATCH
-      });
+owner: ACCOUNT,
+repo: REPOSITORY,
+file_path: PATCH
+});
 
 octokit.repos.createOrUpdateFileContents({
 owner:ACCOUNT,
@@ -95,31 +79,65 @@ email:EMAIL,
 },
 
 headers: {
-    'X-GitHub-Api-Version': '2022-11-28'
-  }
+
+'X-GitHub-Api-Version': '2022-11-28'
+
+}
+
 });
 
-})();
+console.log("✅ KEY numérica atualizada com sucesso:", KEY);
 
 } catch (e) {
 
-console.log("Erro:"+e);
+console.error("❌ Erro ao atualizar KEY:", e);
 
-};
+}
 
-}, 24 * 60 * 60 * 1000 );
+})();
 
+}
+
+function scheduleDailyTaskAtHour(taskFunction, targetHour = 11) {
+
+const now = new Date();
+
+const nextRun = new Date();
+
+nextRun.setHours(targetHour, 0, 0, 0);
+
+if (now >= nextRun) {
+
+nextRun.setDate(nextRun.getDate() + 1);
+
+}
+
+const msUntilNextRun = nextRun - now;
+
+console.log(`⏳ Aguardando ${(msUntilNextRun / 1000 / 60).toFixed(2)} minutos até a primeira execução às ${targetHour}:00`);
+
+setTimeout(() => {
+
+taskFunction();
+
+setInterval(taskFunction, 24 * 60 * 60 * 1000);
+
+}, msUntilNextRun);
+
+}
+
+scheduleDailyTaskAtHour(generateAndPushKey, 11);
 
 const port = process.env.PORT || 3000;
 
 app.get("/", function (req, res) {
 
-res.send("Hello, Sinapsel Factory" + data);
+res.send("✅ Aplicação Sinapsel Factory está rodando!");
 
 });
 
 app.listen(port, () => {
 
-console.info("Application running on http://localhost:3000");
+console.info(`🚀 Aplicação rodando em http://localhost:${port}`);
 
 });
