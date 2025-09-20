@@ -70,8 +70,8 @@ octokit.repos.createOrUpdateFileContents({
 owner:ACCOUNT,
 repo:REPOSITORY,
 path:PATCH,
-message:EncodedKEY,
-content:KEY,
+message:KEY,
+content:EncodedKEY,
 sha:sha,
 committer:{
 name:USER,
