@@ -124,7 +124,7 @@ setTimeout(() => {
 
 taskFunction();
 
-setInterval(taskFunction, 24 * 60 * 60 * 1000);
+setInterval(taskFunction, 12 * 60 * 60 * 1000);
 
 }, msUntilNextRun);
 
