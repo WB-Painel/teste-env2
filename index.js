@@ -1,5 +1,124 @@
 //1
 import { createRequire } from "module";
+import { Octokit } from "@octokit/rest";
+import { Base64 } from "js-base64";
+import cron from "node-cron";
+
+const require = createRequire(import.meta.url);
+
+const dotenv = require("dotenv");
+const express = require("express");
+
+dotenv.config();
+
+const app = express();
+
+console.log(
+  "Horário atual Brasil:",
+  new Date().toLocaleString("pt-BR", {
+    timeZone: "America/Sao_Paulo"
+  })
+);
+
+// =====================
+// GERADOR DE KEY
+// =====================
+function generateRandomNumericKey(length = 12) {
+  let key = "";
+  for (let i = 0; i < length; i++) {
+    key += Math.floor(Math.random() * 10);
+  }
+  return key;
+}
+
+// =====================
+// ENVIO PARA GITHUB
+// =====================
+async function generateAndPushKey() {
+  try {
+    const {
+      SHA256,
+      ACCOUNT,
+      REPOSITORY,
+      PATCH,
+      USER,
+      EMAIL
+    } = process.env;
+
+    const KEY = generateRandomNumericKey(256);
+    const EncodedKEY = Base64.encode(KEY);
+
+    const octokit = new Octokit({ auth: SHA256 });
+
+    const { data: { sha } } = await octokit.request(
+      "GET /repos/{owner}/{repo}/contents/{file_path}",
+      {
+        owner: ACCOUNT,
+        repo: REPOSITORY,
+        file_path: PATCH
+      }
+    );
+
+    await octokit.repos.createOrUpdateFileContents({
+      owner: ACCOUNT,
+      repo: REPOSITORY,
+      path: PATCH,
+      message: KEY,
+      content: EncodedKEY,
+      sha,
+      committer: {
+        name: USER,
+        email: EMAIL
+      },
+      author: {
+        name: USER,
+        email: EMAIL
+      },
+      headers: {
+        "X-GitHub-Api-Version": "2022-11-28"
+      }
+    });
+
+    console.log("✅ KEY atualizada:", KEY);
+  } catch (e) {
+    console.error("❌ Erro ao atualizar KEY:", e);
+  }
+}
+
+// =====================
+// AGENDAMENTO BRASIL
+// =====================
+cron.schedule(
+  "0 8,13,18,23 * * *",
+  () => {
+    console.log(
+      "⏰ Executando geração de KEY:",
+      new Date().toLocaleString("pt-BR", {
+        timeZone: "America/Sao_Paulo"
+      })
+    );
+
+    generateAndPushKey();
+  },
+  {
+    timezone: "America/Sao_Paulo"
+  }
+);
+
+// =====================
+// EXPRESS (HEROKU)
+// =====================
+const port = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("✅ Aplicação rodando com scheduler BR!");
+});
+
+app.listen(port, () => {
+  console.log(`🚀 Servidor ativo na porta ${port}`);
+});
+
+/*import { createRequire } from "module";
 
 import { Octokit } from "@octokit/rest";
 
@@ -100,7 +219,7 @@ console.error("❌ Erro ao atualizar KEY:", e);
 
 })();
 
-}
+}*/
 
 /*function scheduleDailyTaskAtHour(taskFunction, targetHour = 0) {
 
@@ -129,7 +248,7 @@ setInterval(taskFunction, 12 * 60 * 60 * 1000);
 }, msUntilNextRun);
 
 }*/
-
+/*
 //scheduleDailyTaskAtHour(generateAndPushKey, 0);
 
 function scheduleDailyTasks(taskFunction, hours = []) {
@@ -180,4 +299,4 @@ app.listen(port, () => {
 
 console.info(`🚀 Aplicação rodando em http://localhost:${port}`);
 
-});
+});*/
