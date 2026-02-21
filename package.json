@@ -1,21 +1,20 @@
 {
-  "name": "2nodejs-arquivo-env",
   "version": "1.0.0",
-  "description": "",
+  "name": "2nodejs-arquivo-env",
+  "description": "Generate Key",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index"
+    "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "BDB",
   "license": "ISC",
   "dependencies": {
     "@octokit/rest": "^21.1.1",
+    "js-base64": "^3.7.7",
     "dotenv": "^10.0.0",
     "express": "^4.21.2",
-    "js-base64": "^3.7.7",
-    "octokit": "^4.1.2",
-    "parse": "^4.3.1"
+    "node-cron": "^3.0.3"
   }
 }
