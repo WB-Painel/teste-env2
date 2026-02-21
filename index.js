@@ -102,7 +102,7 @@ console.error("❌ Erro ao atualizar KEY:", e);
 
 }
 
-function scheduleDailyTaskAtHour(taskFunction, targetHour = 0) {
+/*function scheduleDailyTaskAtHour(taskFunction, targetHour = 0) {
 
 const now = new Date();
 
@@ -128,9 +128,45 @@ setInterval(taskFunction, 12 * 60 * 60 * 1000);
 
 }, msUntilNextRun);
 
+}*/
+
+//scheduleDailyTaskAtHour(generateAndPushKey, 0);
+
+function scheduleDailyTasks(taskFunction, hours = []) {
+
+function scheduleNextRun(hour) {
+
+const now = new Date();
+  
+const nextRun = new Date();
+
+nextRun.setHours(hour, 0, 0, 0);
+
+if (now >= nextRun) {
+
+nextRun.setDate(nextRun.getDate() + 1);
+
 }
 
-scheduleDailyTaskAtHour(generateAndPushKey, 0);
+const delay = nextRun - now;
+
+console.log(`⏳ Próxima execução às ${hour}:00 em ${(delay/1000/60).toFixed(2)} min`);
+
+setTimeout(() => {
+
+taskFunction();
+
+scheduleNextRun(hour); // reagenda pro próximo dia
+
+}, delay);
+
+}
+
+hours.forEach(scheduleNextRun);
+
+}
+
+scheduleDailyTasks(generateAndPushKey, [8, 13, 18, 23]);
 
 const port = process.env.PORT || 3000;
 
