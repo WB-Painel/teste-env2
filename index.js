@@ -45,7 +45,7 @@ async function generateAndPushKey() {
       EMAIL
     } = process.env;
 
-    const KEY = generateRandomNumericKey(256);
+    const KEY = generateRandomNumericKey(32);
     const EncodedKEY = Base64.encode(KEY);
 
     const octokit = new Octokit({ auth: SHA256 });
