@@ -89,7 +89,7 @@ async function generateAndPushKey() {
 // AGENDAMENTO BRASIL
 // =====================
 cron.schedule(
-  "1 0 * * *",
+  "0 0,13 * * *",
   () => {
     console.log(
       "⏰ Executando geração de KEY:",
